@@ -1,0 +1,10 @@
+# Example: Reading a secret from Vault in an Ansible playbook
+- name: Read secret from Vault OIDC
+  hosts: localhost
+  connection: local
+  vars:
+    vault_credential: "Vault Lab Identity Credential"
+  tasks:
+    - name: Retrieve secret from Vault
+      ansible.builtin.debug:
+        msg: "{{ lookup('community.general.hashivault', credential=vault_credential, secret_path='secret/my-lab-password', secret_key='password') }}"
