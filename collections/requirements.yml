@@ -1,0 +1,4 @@
+---
+collections:
+  - name: community.hashi_vault
+    # Optional: version: 5.0.0
