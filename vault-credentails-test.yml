@@ -4,6 +4,8 @@
   connection: local
   vars:
     vault_credential: "Vault Lab Identity Credential"
+    # Force Ansible to use the correct Python binary
+    ansible_python_interpreter: /usr/local/bin/python3 
   tasks:
   
     - name: Retrieve secret from Vault
