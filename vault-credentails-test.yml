@@ -5,10 +5,6 @@
   vars:
     vault_credential: "Vault Lab Identity Credential"
   tasks:
-
-    - name: Verify hvac library presence
-      ansible.builtin.command: python3 -c "import hvac; print(hvac.__version__)"
-      delegate_to: localhost
   
     - name: Retrieve secret from Vault
       ansible.builtin.debug:
