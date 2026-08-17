@@ -1,3 +1,8 @@
+
+- name: Verify hvac library presence
+  ansible.builtin.command: python3 -c "import hvac; print(hvac.__version__)"
+  delegate_to: localhost
+
 # Example: Reading a secret from Vault in an Ansible playbook
 - name: Read secret from Vault OIDC
   hosts: localhost
