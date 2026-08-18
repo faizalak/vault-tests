@@ -4,10 +4,16 @@
   connection: local
   vars:
     vault_credential: "Vault Lab Identity Credential"
-    # CHANGE THIS LINE: Use /usr/bin/python3 instead of /usr/local/bin/python3
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-  
-    - name: Retrieve secret from Vault
+    - name: Retrieve secret from Vault using module
+      community.hashi_vault.vault_kv2_get:
+        # Pass-through your AAP Credential setup
+        credential: "{{ vault_credential }}"
+        engine_mount_point: secret
+        path: my-lab-password
+      register: my_vault_secret
+
+    - name: Display the password safely
       ansible.builtin.debug:
-        msg: "{{ lookup('community.hashi_vault.hashi_vault', credential=vault_credential, secret_path='secret/my-lab-password', secret_key='password') }}"
+        msg: "The password is {{ my_vault_secret.secret.password }}"
