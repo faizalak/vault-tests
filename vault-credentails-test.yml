@@ -3,13 +3,11 @@
   hosts: localhost
   connection: local
   vars:
-    vault_credential: "Vault Lab Identity Credential"
+    # Target the true system python inside the AAP EE where hvac is found
     ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Retrieve secret from Vault using module
       community.hashi_vault.vault_kv2_get:
-        # Pass-through your AAP Credential setup
-        credential: "{{ vault_credential }}"
         engine_mount_point: secret
         path: my-lab-password
       register: my_vault_secret
