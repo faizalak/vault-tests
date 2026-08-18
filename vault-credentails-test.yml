@@ -1,10 +1,7 @@
-# Example: Reading a secret from Vault in an Ansible playbook
+---
 - name: Read secret from Vault OIDC
   hosts: localhost
   connection: local
-  vars:
-    # Target the true system python inside the AAP EE where hvac is found
-    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Retrieve secret from Vault using module
       community.hashi_vault.vault_kv2_get:
