@@ -2,7 +2,10 @@
   hosts: localhost
   connection: local
   tasks:
+    - name: Debug all available variables
+      ansible.builtin.debug:
+        var: vars
+
     - name: Display the password safely
       ansible.builtin.debug:
-        # Use the variable name you defined in the AAP Credential mapping
         msg: "The password is {{ my_vault_password }}"
