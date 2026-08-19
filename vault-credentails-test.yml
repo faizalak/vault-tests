@@ -1,14 +1,8 @@
----
 - name: Read secret from Vault OIDC
   hosts: localhost
   connection: local
   tasks:
-    - name: Retrieve secret from Vault using module
-      community.hashi_vault.vault_kv2_get:
-        engine_mount_point: secret
-        path: my-lab-password
-      register: my_vault_secret
-
     - name: Display the password safely
       ansible.builtin.debug:
-        msg: "The password is {{ my_vault_secret.secret.password }}"
+        # Use the variable name you defined in the AAP Credential mapping
+        msg: "The password is {{ my_vault_password }}"
